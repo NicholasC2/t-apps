@@ -1,0 +1,25 @@
+{
+  "name": "@t-apps/types",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "barrels": "barrelsby --directory src --delete --fullPathname",
+    "build": "npm run barrels && tsc -p .",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc -p . --noEmit"
+  },
+  "devDependencies": {
+    "barrelsby": "^2.8.1"
+  }
+}
