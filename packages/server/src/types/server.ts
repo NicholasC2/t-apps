@@ -1,3 +1,5 @@
+import { Request, Response, NextFunction } from "express";
+
 export namespace ServerTypes {
     export interface Options {
         port: number;
@@ -8,25 +10,33 @@ export namespace ServerTypes {
         POST = "POST",
         PUT = "PUT",
         PATCH = "PATCH",
-        DELETE = "DELETE"
-    }
-
-    export interface Context {
-        params: Record<string, string | string[]>;
-        body: unknown;
-        headers: Record<string, string>;
+        DELETE = "DELETE",
     }
 
     export type Handler = (
-        context: Context
-    ) => Promise<Response> | Response;
+        req: Request,
+        res: Response,
+    ) => Promise<void> | void;
+
+    export type Middleware = (
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) => Promise<void> | void;
 
     export interface Instance {
-        options: Options
+        options: Options;
 
         route(
             method: Method,
             endpoint: string,
+            handler: Handler
+        ): void;
+
+        route(
+            method: Method,
+            endpoint: string,
+            middleware: Middleware,
             handler: Handler
         ): void;
 
