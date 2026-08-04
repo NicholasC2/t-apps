@@ -7,5 +7,4 @@ export * from "./api/response";
 export * from "./common/id";
 export * from "./common/timestamps";
 export * from "./user/email";
-export * from "./user/token";
 export * from "./user/user";

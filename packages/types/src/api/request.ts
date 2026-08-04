@@ -1,4 +1,3 @@
-export interface Request {
-    
-    data: unknown;
+export interface Request<T = unknown> {
+    data: T;
 }
