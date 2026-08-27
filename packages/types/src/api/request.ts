@@ -1,3 +1,5 @@
-export interface Request<T = unknown> {
-    data: T;
+import { Data } from "./data";
+
+export interface Request {
+    data: Data;
 }
