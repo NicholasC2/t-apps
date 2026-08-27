@@ -27,7 +27,7 @@ export class Tapp {
 
     async send<T>(
         endpoint: string,
-        request: Request<T>,
+        request: Request,
         username: string
     ) {
         return fetch(`${API_URL}${endpoint}`, {
